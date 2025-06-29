@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<ContainerDescription xmlns="http://api-invoice.taxcom.ru/meta" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<DocFlow Id="8ff898f7-e6f9-4865-987a-59456d780796">
+		<Documents>
+			<Document ReglamentCode="Nonformalized" TransactionCode="MainDocument">
+				<Files>
+					<MainImage xmlns:d6p1="http://api-invoice.taxcom.ru/card" Path="1/ON_NSCHFDOPPR_781490187318_7843316106_784301001_20250626_71ed6afd-7684-48a1-a800-45fae004a114_0_0_0_0_0_00.xml"/>
+					<ExternalCard xmlns:d6p1="http://api-invoice.taxcom.ru/card" Path="1/card.xml"/>
+				</Files>
+			</Document>
+		</Documents>
+	</DocFlow>
+</ContainerDescription>

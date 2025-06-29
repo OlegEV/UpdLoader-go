@@ -1,0 +1,47 @@
+services:
+  upd-loader-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: upd-loader-go-bot
+    restart: unless-stopped
+    environment:
+      # Telegram Bot Configuration
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - AUTHORIZED_USERS=${AUTHORIZED_USERS}
+      
+      # MoySkald API Configuration
+      - MOYSKLAD_API_TOKEN=${MOYSKLAD_API_TOKEN}
+      
+      # File Processing Configuration
+      - MAX_FILE_SIZE=${MAX_FILE_SIZE:-52428800}
+      - TEMP_DIR=${TEMP_DIR:-./temp}
+      
+      # Logging Configuration
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - LOG_FORMAT=${LOG_FORMAT:-text}
+      
+      # Timezone
+      - TZ=Europe/Moscow
+    volumes:
+      # Mount temp directory for file processing
+      - ./temp:/root/temp
+      # Optional: Mount logs directory
+      - ./logs:/root/logs
+    networks:
+      - upd-loader-network
+    # Health check
+    healthcheck:
+      test: ["CMD", "ps", "aux", "|", "grep", "main"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  upd-loader-network:
+    driver: bridge
+
+volumes:
+  temp-data:
+  logs-data:

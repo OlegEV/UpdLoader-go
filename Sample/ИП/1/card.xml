@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<Card xmlns="http://api-invoice.taxcom.ru/card" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Identifiers ExternalIdentifier="ON_NSCHFDOPPR_781490187318_784331610"/>
+	<Type/>
+	<Description Title="Товарная накладная" Date="2025-06-26T00:00:00"/>
+	<Sender>
+		<Abonent Id="7843316106_784301001" Name="ООО &quot;ПОЛИКАРБОНАТНЫЕ ПРОФИЛИ&quot;" Inn="7843316106" Kpp="784301001"/>
+	</Sender>
+	<Receiver/>
+</Card>
