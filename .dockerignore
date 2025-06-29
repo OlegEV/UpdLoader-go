@@ -41,6 +41,8 @@ CONVERSION_SUMMARY.md
 # Scripts
 init.sh
 generate_sum.go
+generate_go_sum.sh
+generate_go_sum.bat
 
 # Environment files
 .env.example

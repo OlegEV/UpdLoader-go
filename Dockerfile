@@ -7,11 +7,18 @@ WORKDIR /app
 # Install git (needed for some Go modules)
 RUN apk add --no-cache git
 
+# Copy go mod and sum files first for better caching
+COPY go.mod ./
+COPY go.su[m] ./
+
+# Download dependencies (this layer will be cached if go.mod doesn't change)
+RUN go mod download
+
 # Copy source code
 COPY . .
 
-# Download dependencies and build the application
-RUN go mod download && go mod tidy && CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main cmd/main.go
+# Ensure all dependencies are properly resolved and build the application
+RUN go mod tidy && CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main cmd/main.go
 
 # Final stage
 FROM alpine:latest
@@ -32,7 +39,7 @@ COPY --from=builder /app/main .
 RUN mkdir -p ./temp
 
 # Expose port (not strictly necessary for this bot, but good practice)
-EXPOSE 8080
+# EXPOSE 8080
 
 # Run the application
 CMD ["./main"]
